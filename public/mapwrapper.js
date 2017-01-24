@@ -36,12 +36,20 @@ MapWrapper.prototype = {
     });
   },
 
+  moveCenter: function(newCoords){
+    this.googleMap.setCenter(newCoords);
+  },
+
   buttonClickHandler: function(){
-    var chicagoCentre = {lat: 41.878114, lng:-87.629798 };
+    var chicagoCentre = {lat: 41.878114, lng:-87.629798 }; //I don't think I should have hardcoded data in here but I don't understand how to pass outside info to the buttonClickHandler in the app
     this.moveCenter(chicagoCentre);
   },
 
-  moveCenter: function(newCoords){
-    this.googleMap.setCenter(newCoords);
+  whereAmI: function(){
+    navigator.geolocation.getCurrentPosition(function(position){
+      var locationObject = {lat:position.coords.latitude, lng: position.coords.longitude}
+      this.moveCenter(locationObject);
+      this.addMarker(locationObject);
+    }.bind(this));
   }
 };

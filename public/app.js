@@ -16,8 +16,11 @@ var initialize = function(){
 
   mainMap.addClickEvent();
 
-  var button = document.querySelector('button');
-  button.onclick = mainMap.buttonClickHandler.bind(mainMap);
+  var button1 = document.querySelector('#button1');
+  button1.onclick = mainMap.buttonClickHandler.bind(mainMap);
+
+  var button2 = document.querySelector('#button2');
+  button2.onclick = mainMap.whereAmI.bind(mainMap);
 
 };
 
